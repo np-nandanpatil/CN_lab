@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-public class UdpDnsClient {
+public class UdpDnsClientExp5 {
     public static void main(String[] args) throws IOException {
         DatagramSocket clientSocket = new DatagramSocket();
         InetAddress serverAddress = (args.length == 0) ? InetAddress.getLocalHost() : InetAddress.getByName(args[0]);
