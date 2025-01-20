@@ -2,15 +2,14 @@ import java.io.*;
 import java.net.*;
 class ARPClientExp6a {
     public static void main(String[] args) throws Exception {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        Socket clientSocket = new Socket("127.0.0.1", 1399);
-        DataInputStream dIn = new DataInputStream(clientSocket.getInputStream());
-        DataOutputStream dOut = new DataOutputStream(clientSocket.getOutputStream());
-        System.out.println("Enter the Logical Address (IP):");
-        String logicalAddress = in.readLine();
-        dOut.writeBytes(logicalAddress + '\n');
-        String physicalAddress = dIn.readLine();
-        System.out.println("The Physical Address is: " + physicalAddress);
-        clientSocket.close();
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        Socket cs = new Socket("127.0.0.1", 1399);
+        DataInputStream in = new DataInputStream(cs.getInputStream());
+        DataOutputStream out = new DataOutputStream(cs.getOutputStream());
+        System.out.print("Enter the ip to find it's mac: ");
+        String ip = input.readLine();
+        out.writeBytes(ip+'\n');
+        String mac = in.readLine();
+        System.out.println(mac);
     }
 }

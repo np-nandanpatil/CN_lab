@@ -3,8 +3,8 @@ import java.util.*;
 
 public class UDPServerExp4b {
     public static void main(String[] args) throws Exception {
-        try (DatagramSocket serverSocket = new DatagramSocket(9902);
-             Scanner sc = new Scanner(System.in)) {
+        DatagramSocket serverSocket = new DatagramSocket(9902);
+             Scanner sc = new Scanner(System.in);
             byte[] buffer = new byte[1024];
             while (true) {
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
@@ -21,4 +21,3 @@ public class UDPServerExp4b {
             }
         }
     }
-}

@@ -3,8 +3,8 @@ import java.util.*;
 
 public class UDPClientExp4b {
     public static void main(String[] args) throws Exception {
-        try (DatagramSocket clientSocket = new DatagramSocket();
-             Scanner sc = new Scanner(System.in)) {
+        DatagramSocket clientSocket = new DatagramSocket();
+             Scanner sc = new Scanner(System.in);
             InetAddress ip = InetAddress.getByName("localhost");
             byte[] buffer = new byte[1024];
             while (true) {
@@ -22,4 +22,3 @@ public class UDPClientExp4b {
             }
         }
     }
-}

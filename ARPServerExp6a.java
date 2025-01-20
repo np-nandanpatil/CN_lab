@@ -2,20 +2,22 @@ import java.io.*;
 import java.net.*;
 class ARPServerExp6a {
     public static void main(String[] args) throws Exception {
-        ServerSocket serverSocket = new ServerSocket(1399);
-        String[] ipAddresses = {"165.165.80.80", "165.165.79.1"};
-        String[] macAddresses = {"6A:08:AA:C2", "8A:BC:E3:FA"};
-        while (true) {
-            Socket clientSocket = serverSocket.accept();
-            DataInputStream clientIn = new DataInputStream(clientSocket.getInputStream());
-            DataOutputStream clientOut = new DataOutputStream(clientSocket.getOutputStream());
-            String requestedIP = clientIn.readLine();
-            for (int i = 0; i < ipAddresses.length; i++)
-                if (requestedIP.equals(ipAddresses[i])) {
-                    clientOut.writeBytes(macAddresses[i] + '\n');
+        // Take server socket
+        ServerSocket ss = new ServerSocket(1399);
+        String[] ip = {"192.65.22.11", "123.76.54.4"};
+        String[] mac = {"jhgkjbhvg", "tfrddrtyui"};
+        while(true){
+            Socket cs = ss.accept();
+            DataInputStream in = new DataInputStream(cs.getInputStream());
+            DataOutputStream out = new DataOutputStream(cs.getOutputStream());
+            String reqIP = in.readLine();
+            for(int i=0; i<ip.length; i++){
+                if(reqIP.equals(ip[i])){
+                    out.writeBytes(mac[i] + '\n');
                     break;
                 }
-            clientSocket.close();
+            }
+            cs.close();
         }
     }
 }
